@@ -1082,13 +1082,13 @@ console.log(contador);
 
 // 4.- Mostrar el color de los cauldron con magic_description "Naproxen"
 
-console.log(totalCauldrons);
 for(let i = 0; i < totalCauldrons.length; i++){
 
     const cauldron = totalCauldrons[i];
 
     if(cauldron.magic_description === "Naproxen"){
-        console.log(cauldron.color);
+
+        console.log("Cauldron con magic_decription 'Naproxen' color =  "  + cauldron.color);
         
     }
 }
@@ -1104,7 +1104,7 @@ for(let i = 0; i < totalCauldrons.length; i++){
     }
 }
 
-console.log(contadorWood);
+console.log("Total de cauldrons de madera: "  + contadorWood);
 
 // 6.- Mostrar la Id y magic_description de los cauldron llamados "Brassicaceae"
 
@@ -1113,7 +1113,8 @@ for(let i = 0; i < totalCauldrons.length; i++){
     const cauldron = totalCauldrons[i];
 
     if(cauldron.name === "Brassicaceae"){
-
+        console.log("Cauldron name: " + cauldron.name);
+        
         console.log("Cauldron ID: " + cauldron.id);
         console.log("Cauldron magic description: " + cauldron.magic_description);
         
@@ -1123,10 +1124,51 @@ for(let i = 0; i < totalCauldrons.length; i++){
 
 // 7.- Mostrar el porcentaje de cauldrons dañados separados por temporada
 
+function showPercentDamagedCauldrons(seasonCauldrons){
+    let contador = 0;
+
+    for(let i = 0; i < seasonCauldrons.length; i++){
+
+        const cauldron = seasonCauldrons[i];
+
+        if(cauldron.damaged){
+
+            contador++;
+        }        
+    }
+
+    const percent = (contador / (seasonCauldrons.length + 1)) * 100;
+    
+    return percent
+}
+
+console.log("El porcentaje de cauldrons dañados en autum: "  + showPercentDamagedCauldrons(autumCauldrons) + " % ");
+console.log("El porcentaje de cauldrons dañados en summer: " + showPercentDamagedCauldrons(summerCauldrons) + " % ");
+console.log("El porcentaje de cauldrons dañados en winter: "  + showPercentDamagedCauldrons(winterCauldrons) + " % ");
+console.log("El porcentaje de cauldrons dañados en spring: "  + showPercentDamagedCauldrons(springCauldrons) + " % ");
+
+
 
 // 8.- Mostrar el porcentaje de cauldrons de "Plexiglass" en "winter_seasson"
 
+let plexiglass  = 0;
+let percent     = 0;
+for(let i = 0; i < winterCauldrons.length; i++){
+
+    const cauldron = winterCauldrons[i];
+
+    if(cauldron.type === "Plexiglass"){
+        plexiglass++;
+    }
+
+    percent = (plexiglass / (winterCauldrons.length + 1)) * 100;
+}
+
+console.log("Porcentaje de cauldrons de Plexiglass en winter season: " + percent + " % ");
+
 // 9.- Mostrar el número de cauldrons de color "Orange" en buen estado
+
+
 
 // 10.- Mostrar el listado de posibles colores de cauldrons, sin repetir color.
 
